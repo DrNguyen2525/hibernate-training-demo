@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>org.sun.asterisk</groupId>
+  <artifactId>HibernateTrainingDemo</artifactId>
+  <version>1.0-SNAPSHOT</version>
+
+  <name>HibernateTrainingDemo</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.14</maven.compiler.source>
+    <maven.compiler.target>1.14</maven.compiler.target>
+  </properties>
+
+  <dependencies>
+
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+
+    <!-- Hibernate Core -->
+    <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-core</artifactId>
+      <version>5.4.19.Final</version>
+    </dependency>
+
+    <!-- MySQL JDBC driver -->
+    <!-- http://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>8.0.21</version>
+    </dependency>
+
+    <!-- Logger -->
+    <!-- https://mvnrepository.com/artifact/log4j/log4j -->
+    <dependency>
+      <groupId>log4j</groupId>
+      <artifactId>log4j</artifactId>
+      <version>1.2.17</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-log4j12 -->
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-log4j12</artifactId>
+      <version>1.7.30</version>
+    </dependency>
+
+    <!-- Cache -->
+    <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-jcache -->
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-jcache</artifactId>
+      <version>5.4.19.Final</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/org.ehcache/ehcache -->
+    <dependency>
+      <groupId>org.ehcache</groupId>
+      <artifactId>ehcache</artifactId>
+      <version>3.8.1</version>
+    </dependency>
+
+  </dependencies>
+
+</project>
