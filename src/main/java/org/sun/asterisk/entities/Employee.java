@@ -44,7 +44,7 @@ public class Employee {
     @JoinColumn(name = "dept_id", nullable = false)
     private Department department;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "mng_id")
     private Employee manager;
 

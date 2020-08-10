@@ -20,18 +20,25 @@ public class App {
     public final static Logger logger = Logger.getLogger(App.class);
 
     private static void insertSampleData() {
-        // Insert sample department data
         Session session = HibernateUtils.getSessionFactory().openSession();
 
         Transaction transaction = session.getTransaction();
 
+        boolean isTableEmpty;
+
+        // Insert sample Department data
         logger.info("Checking for Department data...");
 
         try {
-            if (session.createQuery("FROM Department").getResultList().isEmpty()) {
-                logger.info("Inserting sample department data...");
+            // Check if department table is empty
+            isTableEmpty = session.createNativeQuery("SELECT 1 FROM department")
+                    .setMaxResults(1)
+                    .list()
+                    .isEmpty();
 
+            if (isTableEmpty) {
                 transaction.begin();
+                logger.info("Inserting sample department data...");
 
                 for (Department department : SampleData.departments)
                     session.save(department);
@@ -47,17 +54,19 @@ public class App {
             session.close();
         }
 
-        // Insert sample employee data
-        session = HibernateUtils.getSessionFactory().openSession();
-
-        transaction = session.getTransaction();
-
+        // Insert sample Employee data
         logger.info("Checking for Employee data...");
 
         try {
-            if (session.createQuery("FROM Employee").getResultList().isEmpty()) {
-                logger.info("Inserting sample employee data...");
+            session = HibernateUtils.getSessionFactory().openSession();
 
+            // Check if employee table is empty
+            isTableEmpty = session.createNativeQuery("SELECT 1 FROM employee")
+                    .setMaxResults(1)
+                    .list()
+                    .isEmpty();
+
+            if (isTableEmpty) {
                 List<Employee> employees = new ArrayList<>();
                 employees.add(SampleData.president);
                 employees.addAll(SampleData.managers);
@@ -65,7 +74,10 @@ public class App {
                 employees.addAll(SampleData.salesmen);
                 employees.addAll(SampleData.clerks);
 
+                transaction = session.getTransaction();
+
                 transaction.begin();
+                logger.info("Inserting sample employee data...");
 
                 for (Employee employee : employees)
                     session.save(employee);
@@ -81,18 +93,22 @@ public class App {
             session.close();
         }
 
-        // Insert sample salary grade data
-        session = HibernateUtils.getSessionFactory().openSession();
-
-        transaction = session.getTransaction();
-
+        // Insert sample Salary Grade data
         logger.info("Checking for Salary Grade data...");
-
         try {
-            if (session.createQuery("FROM SalaryGrade").getResultList().isEmpty()) {
-                logger.info("Inserting sample salary grade data...");
+            session = HibernateUtils.getSessionFactory().openSession();
+
+            // Check if salary_grade table is empty
+            isTableEmpty = session.createNativeQuery("SELECT 1 FROM salary_grade")
+                    .setMaxResults(1)
+                    .list()
+                    .isEmpty();
+
+            if (isTableEmpty) {
+                transaction = session.getTransaction();
 
                 transaction.begin();
+                logger.info("Inserting sample salary grade data...");
 
                 session.save(SampleData.salaryGrade);
                 session.flush();
